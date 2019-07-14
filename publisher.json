@@ -14,29 +14,29 @@
 }, {
 	"id": 4,
 	"name": "Under the sun",
-	"superpublisher": 3
+	"company"	: 5
 }, {
 	"id": 5,
 	"name": "Quick Sales",
-	"superpublisher": 1
+	"company"	: 7
 }, {
 	"id": 6,
 	"name": "Hard Sales",
-	"superpublisher": 1
+	"company"	: 9
 }, {
 	"id": 7,
 	"name": "Information Security",
-	"superpublisher": 2
+	"company"	: 4
 }, {
 	"id": 8,
 	"name": "High-End",
-	"superpublisher": 2
+	"company"	: 6
 }, {
 	"id": 9,
 	"name": "Early Development",
-	"superpublisher": 6
+	"company"	: 8
 }, {
 	"id": 10,
 	"name": "Product Pout Pourri",
-	"superpublisher": 3
+	"company"	: 10
 }]

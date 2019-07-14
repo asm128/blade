@@ -107,6 +107,9 @@
       <AdditionalLibraryDirectories>$(OutDir); </AdditionalLibraryDirectories>
       <AdditionalDependencies>blade.lib; llc.lib; ws2_32.lib; </AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>copy ..\*.json ..\..\$(Platform).$(Configuration)\ &amp; copy ..\..\$(Platform).$(Configuration)\*.exe ..\..\$(Platform).$(Configuration)\*.</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -125,6 +128,9 @@
       <AdditionalLibraryDirectories>$(OutDir); </AdditionalLibraryDirectories>
       <AdditionalDependencies>blade.lib; llc.lib; ws2_32.lib; </AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>copy ..\*.json ..\..\$(Platform).$(Configuration)\ &amp; copy ..\..\$(Platform).$(Configuration)\*.exe ..\..\$(Platform).$(Configuration)\*.</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -147,6 +153,9 @@
       <AdditionalLibraryDirectories>$(OutDir); </AdditionalLibraryDirectories>
       <AdditionalDependencies>blade.lib; llc.lib; ws2_32.lib; </AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>copy ..\*.json ..\..\$(Platform).$(Configuration)\ &amp; copy ..\..\$(Platform).$(Configuration)\*.exe ..\..\$(Platform).$(Configuration)\*.</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -169,6 +178,9 @@
       <AdditionalLibraryDirectories>$(OutDir); </AdditionalLibraryDirectories>
       <AdditionalDependencies>blade.lib; llc.lib; ws2_32.lib; </AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>copy ..\*.json ..\..\$(Platform).$(Configuration)\ &amp; copy ..\..\$(Platform).$(Configuration)\*.exe ..\..\$(Platform).$(Configuration)\*.</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
