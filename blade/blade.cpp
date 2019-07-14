@@ -22,7 +22,7 @@
 }
 
 ::gpk::error_t									blade::loadConfig						(::blade::SBladeApp & appState, const ::gpk::view_const_string & filename)	{
-	::gpk::jsonFileRead(appState.JSONConfig, filename);
+	gpk_necall(::gpk::jsonFileRead(appState.JSONConfig, filename), "Failed to load configuration. %s.", filename.begin());
 	return 0;
 }
 
