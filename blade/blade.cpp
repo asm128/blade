@@ -6,17 +6,6 @@
 
 #include "gpk_json_expression.h"
 
-::gpk::error_t									blade::validateMethod					(const ::gpk::view_array<::gpk::TKeyValConstString> & environViews, const ::gpk::view_const_string & method)	{
-	for(uint32_t iKey = 0; iKey < environViews.size(); ++iKey) {
-		if(environViews[iKey].Key == ::gpk::view_const_string{"REQUEST_METHOD"}) {
-			if(environViews[iKey].Val == method) {
-				return 1;
-			}
-		}
-	}
-	return 0;
-}
-
 ::gpk::error_t									blade::loadConfig						(::blade::SBladeApp & appState, const ::gpk::view_const_string & filename)	{
 	gpk_necall(::gpk::jsonFileRead(appState.JSONConfig, filename), "Failed to load configuration. %s.", filename.begin());
 	return 0;

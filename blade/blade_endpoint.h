@@ -15,16 +15,16 @@ GPK_CGI_JSON_APP_IMPL();																																							\
 	::blade::SBladeApp									app;																														\
 	::gpk::array_obj<::gpk::TKeyValConstString>			environViews;																												\
 	::gpk::environmentBlockViews(runtimeValues.EntryPointArgs.EnvironmentBlock, environViews);																						\
-	if(0 == ::blade::validateMethod(environViews, "GET")) {																															\
+	if(0 == ::gpk::keyValVerify(environViews, "GET")) {																																\
 		output.append(::gpk::view_const_string{"{ \"status\" : 403, \"description\" :\"forbidden\" }\r\n"});																		\
 		return 1;																																									\
 	}																																												\
 	gpk_necall(::blade::loadConfig(app, "blade.json"), "%s", "Failed to load query.");																								\
-	gpk_necall(::blade::loadCWD(environViews, app.CWD), "%s", "Failed to load query.");																											\
+	gpk_necall(::blade::loadCWD(environViews, app.CWD), "%s", "Failed to load query.");																								\
 	gpk_necall(::blade::loadQuery(app.Query, runtimeValues.QueryStringKeyVals), "%s", "Failed to load query.");																		\
 	gpk_necall(::blade::loadDatabase(app), "%s", "Failed to load blade databases.");																								\
 	int32_t												detail							= -1;																						\
-	gpk_necall(::blade::loadDetail(environViews,detail), "%s", "Failed to load detail.");																										\
+	gpk_necall(::blade::loadDetail(environViews,detail), "%s", "Failed to load detail.");																							\
 	gpk_necall(::blade::generate_output_for_db(app, _endpointName, detail, output), "%s", "Failed to load blade databases.");														\
 	return 0;																																										\
 }
