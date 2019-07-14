@@ -1,0 +1,5 @@
+{	"path" :
+	{	"database"	: "blade_database"
+	,	"cache"		: "blade_cache"
+	}
+}
