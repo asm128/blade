@@ -56,7 +56,7 @@ static	const ::gpk::TKeyValConstString			g_DataBases	[]							=	// pair of datab
 	};
 
 ::gpk::error_t									blade::loadDatabase						(::blade::SBladeApp & appState)		{
-	::gpk::array_obj<::blade::TKeyValDB>				& dbs									= appState.Databases;
+	::gpk::array_obj<::gpk::TKeyValJSONFile>			& dbs									= appState.Databases;
 	::blade::SQuery										& query									= appState.Query;
 	query.Expand;
 	dbs.resize(::gpk::size(g_DataBases));
@@ -80,7 +80,7 @@ static	const ::gpk::TKeyValConstString			g_DataBases	[]							=	// pair of datab
 	return 0;
 }
 
-static	::gpk::error_t							generate_record_with_expansion			(::gpk::view_array<::blade::TKeyValDB> & databases, ::gpk::SJSONFile & database, uint32_t iRecord, ::gpk::array_pod<char_t> & output, const ::gpk::view_array<const ::gpk::view_const_char> & fieldsToExpand)	{
+static	::gpk::error_t							generate_record_with_expansion			(::gpk::view_array<::gpk::TKeyValJSONFile> & databases, ::gpk::SJSONFile & database, uint32_t iRecord, ::gpk::array_pod<char_t> & output, const ::gpk::view_array<const ::gpk::view_const_char> & fieldsToExpand)	{
 	::gpk::SJSONNode									& node									= *database.Reader.Tree[iRecord];
 	if(0 == fieldsToExpand.size() || ::gpk::JSON_TYPE_OBJECT != node.Object->Type)
 		::gpk::jsonWrite(&node, database.Reader.View, output);
@@ -97,7 +97,7 @@ static	::gpk::error_t							generate_record_with_expansion			(::gpk::view_array<
 				uint64_t											indexRecordToExpand						= 0;
 				::gpk::stoull(database.Reader.View[indexVal], &indexRecordToExpand);
 				for(uint32_t iDatabase = 0; iDatabase < databases.size(); ++iDatabase) {
-					::blade::TKeyValDB									& childDatabase							= databases[iDatabase];
+					::gpk::TKeyValJSONFile								& childDatabase							= databases[iDatabase];
 					if(childDatabase.Key == fieldToExpand || g_DataBases[iDatabase].Val == fieldToExpand) {
 						::gpk::SJSONNode									& childRoot								= *childDatabase.Val.Reader.Tree[0];
 						if(1 >= fieldsToExpand.size()) {

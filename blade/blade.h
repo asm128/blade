@@ -1,5 +1,4 @@
 #include "gpk_json.h"
-#include "gpk_keyval.h"
 
 #include <Windows.h>
 #include <process.h>
@@ -9,8 +8,6 @@
 
 namespace blade
 {
-	typedef ::gpk::SKeyVal<::gpk::view_const_string, ::gpk::SJSONFile> TKeyValDB;
-
 	static constexpr const uint32_t					MAX_TABLE_RECORD_COUNT		= 0x7FFFFFFF;
 
 	struct SQuery {
@@ -25,7 +22,7 @@ namespace blade
 	};
 
 	struct SBladeApp {
-		::gpk::array_obj<TKeyValDB>					Databases					= {};
+		::gpk::array_obj<::gpk::TKeyValJSONFile>	Databases					= {};
 		::blade::SQuery								Query						= {};
 		::blade::SProcess							Process						= {};
 		::gpk::array_pod<char_t>					CWD							= {};
@@ -38,8 +35,6 @@ namespace blade
 	::gpk::error_t									loadDetail					(const ::gpk::view_array<::gpk::TKeyValConstString> & environViews, int32_t & detail);
 	::gpk::error_t									loadQuery					(::blade::SQuery& query, const ::gpk::view_array<const ::gpk::TKeyValConstString> keyvals);
 	::gpk::error_t									loadDatabase				(::blade::SBladeApp & appState);
-
-	typedef ::gpk::SKeyVal<::gpk::view_const_string, ::gpk::SJSONFile> TKeyValDB;
 
 	::gpk::error_t									generate_output_for_db		(::blade::SBladeApp & app, const ::gpk::view_const_string & databaseName, int32_t detail, ::gpk::array_pod<char_t> & output);
 }
