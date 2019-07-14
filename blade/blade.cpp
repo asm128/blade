@@ -6,11 +6,7 @@
 
 #include "gpk_json_expression.h"
 
-::gpk::error_t									blade::validateMethod					(const ::gpk::view_const_string & method)	{
-	::gpk::array_pod<char_t>							environmentBlock; 
-	::gpk::array_obj<::gpk::TKeyValConstString>			environViews;
-	::gpk::environmentBlockFromEnviron(environmentBlock);
-	::gpk::environmentBlockViews(environmentBlock, environViews);
+::gpk::error_t									blade::validateMethod					(const ::gpk::view_array<::gpk::TKeyValConstString> & environViews, const ::gpk::view_const_string & method)	{
 	for(uint32_t iKey = 0; iKey < environViews.size(); ++iKey) {
 		if(environViews[iKey].Key == ::gpk::view_const_string{"REQUEST_METHOD"}) {
 			if(environViews[iKey].Val == method) {
@@ -26,11 +22,7 @@
 	return 0;
 }
 
-::gpk::error_t									blade::loadCWD							(::gpk::array_pod<char_t> & cwd)	{
-	::gpk::array_pod<char_t>							environmentBlock; 
-	::gpk::array_obj<::gpk::TKeyValConstString>			environViews;
-	::gpk::environmentBlockFromEnviron(environmentBlock);
-	::gpk::environmentBlockViews(environmentBlock, environViews);
+::gpk::error_t									blade::loadCWD							(const ::gpk::view_array<::gpk::TKeyValConstString> & environViews, ::gpk::array_pod<char_t> & cwd)	{
 	for(uint32_t iKey = 0; iKey < environViews.size(); ++iKey) {
 		if(environViews[iKey].Key == ::gpk::view_const_string{"SCRIPT_FILENAME"}) {
 			cwd = environViews[iKey].Val;
@@ -45,11 +37,7 @@
 	return 0;
 }
 
-::gpk::error_t									blade::loadDetail						(int32_t & detail)	{
-	::gpk::array_pod<char_t>							environmentBlock; 
-	::gpk::array_obj<::gpk::TKeyValConstString>			environViews;
-	::gpk::environmentBlockFromEnviron(environmentBlock);
-	::gpk::environmentBlockViews(environmentBlock, environViews);
+::gpk::error_t									blade::loadDetail						(const ::gpk::view_array<::gpk::TKeyValConstString> & environViews, int32_t & detail)	{
 	for(uint32_t iKey = 0; iKey < environViews.size(); ++iKey) {
 		if(environViews[iKey].Key == ::gpk::view_const_string{"PATH_INFO"}) {
 			uint64_t _detail = (uint64_t)-1LL;

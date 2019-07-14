@@ -32,10 +32,10 @@ namespace blade
 		::gpk::SJSONFile							JSONConfig					= {};
 	};
 
-	::gpk::error_t									validateMethod				(const ::gpk::view_const_string & method);
+	::gpk::error_t									validateMethod				(const ::gpk::view_array<::gpk::TKeyValConstString> & environViews, const ::gpk::view_const_string & method);
 	::gpk::error_t									loadConfig					(::blade::SBladeApp & appState, const ::gpk::view_const_string & filename);
-	::gpk::error_t									loadCWD						(::gpk::array_pod<char_t> & method);
-	::gpk::error_t									loadDetail					(int32_t & detail);
+	::gpk::error_t									loadCWD						(const ::gpk::view_array<::gpk::TKeyValConstString> & environViews, ::gpk::array_pod<char_t> & method);
+	::gpk::error_t									loadDetail					(const ::gpk::view_array<::gpk::TKeyValConstString> & environViews, int32_t & detail);
 	::gpk::error_t									loadQuery					(::blade::SQuery& query, const ::gpk::view_array<const ::gpk::TKeyValConstString> keyvals);
 	::gpk::error_t									loadDatabase				(::blade::SBladeApp & appState);
 
