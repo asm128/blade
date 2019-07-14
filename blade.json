@@ -3,8 +3,9 @@
 	,	"cache"		: "blade_cache"
 	}
 ,	"databases"	: 
-	[	{ "name": "websites"		, "bind" : ["website"			, ] }	
-	,	{ "name": "users"			, "bind" : ["manager"			, ] }		
-	,	{ "name": "publishers"		, "bind" : ["superpublisher"	, ] }	
+	[	{ "name": "website"			, "bind" : ["website"			, ] }	
+	,	{ "name": "user"			, "bind" : ["manager"			, ] }		
+	,	{ "name": "publisher"		, "bind" : ["superpublisher"	, ] }	
+	,	{ "name": "company"			, "bind" : ["owner"				, ] }	
 	]
 }

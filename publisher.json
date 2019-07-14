@@ -1,6 +1,7 @@
 [{
-	"id": 0,
-	"name": "Gontrill",
+	"id"		: 0,
+	"name"		: "Gontrill",
+	"company"	: 0
 }, {
 	"id": 1,
 	"name": "Boom Publishing",

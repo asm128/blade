@@ -61,9 +61,10 @@
 }
 
 static	const ::gpk::TKeyValConstString			g_DataBases	[]							=	// pair of database name/alias
-	{	{"websites"		, "website"			}
-	,	{"users"		, "manager"			}	
-	,	{"publishers"	, "superpublisher"	}
+	{	{"website"		, "website"			}
+	,	{"user"			, "manager"			}	
+	,	{"publisher"	, "superpublisher"	}
+	,	{"company"		, "owner"			}
 	};
 
 ::gpk::error_t									blade::loadDatabase						(::blade::SBladeApp & appState)		{
@@ -83,8 +84,6 @@ static	const ::gpk::TKeyValConstString			g_DataBases	[]							=	// pair of datab
 ::gpk::error_t									blade::loadQuery						(::blade::SQuery& query, const ::gpk::view_array<const ::gpk::TKeyValConstString> keyvals)	{
 	::gpk::keyvalNumeric("offset"	, keyvals, query.Range.Offset	);
 	::gpk::keyvalNumeric("limit"	, keyvals, query.Range.Count	);
-	if(query.Range.Offset > 0 )
-		--query.Range.Offset;
 	{
 		::gpk::error_t										indexExpand								= ::gpk::find("expand", keyvals);
 		if(-1 != indexExpand) 
@@ -109,10 +108,9 @@ static	::gpk::error_t							generate_record_with_expansion			(::gpk::view_array<
 				bool												bSolved									= false;
 				uint64_t											indexRecordToExpand						= 0;
 				::gpk::stoull(database.Reader.View[indexVal], &indexRecordToExpand);
-				--indexRecordToExpand;
 				for(uint32_t iDatabase = 0; iDatabase < databases.size(); ++iDatabase) {
 					::blade::TKeyValDB									& childDatabase							= databases[iDatabase];
-					if(::gpk::view_const_char{childDatabase.Key.begin(), childDatabase.Key.size()-1} == fieldToExpand || g_DataBases[iDatabase].Val == fieldToExpand) {
+					if(childDatabase.Key == fieldToExpand || g_DataBases[iDatabase].Val == fieldToExpand) {
 						::gpk::SJSONNode									& childRoot								= *childDatabase.Val.Reader.Tree[0];
 						if(1 >= fieldsToExpand.size()) {
 							if(indexRecordToExpand < childRoot.Children.size())
@@ -150,8 +148,6 @@ static	::gpk::error_t							generate_record_with_expansion			(::gpk::view_array<
 	::gpk::SJSONReader									& dbReader								= app.Databases[indexDB].Val.Reader;
 	::gpk::SJSONNode									& jsonRoot								= *app.Databases[indexDB].Val.Reader.Tree[0];
 	if(detail != -1) { // display detail
-		if(detail > 0) 
-			--detail;
 		if(0 == app.Query.Expand.size() && ((uint32_t)detail) >= jsonRoot.Children.size())
 			::gpk::jsonWrite(&jsonRoot, dbReader.View, output);
 		else {
