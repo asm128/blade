@@ -62,7 +62,6 @@ static	const ::gpk::TKeyValConstString			g_DataBases	[]							=	// pair of datab
 ::gpk::error_t									blade::loadDatabase						(::blade::SBladeApp & appState)		{
 	::gpk::array_obj<::blade::TKeyValDB>				& dbs									= appState.Databases;
 	::blade::SQuery										& query									= appState.Query;
-	//::cacheDatabase(appState, "employees");
 	query.Expand;
 	dbs.resize(::gpk::size(g_DataBases));
 	for(uint32_t iDatabase = 0; iDatabase < ::gpk::size(g_DataBases); ++iDatabase) {	// read database documents after loading from remote
