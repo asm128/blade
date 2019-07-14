@@ -19,6 +19,7 @@ GPK_CGI_JSON_APP_IMPL();																																							\
 		output.append(::gpk::view_const_string{"{ \"status\" : 403, \"description\" :\"forbidden\" }\r\n"});																		\
 		return 1;																																									\
 	}																																												\
+	gpk_necall(::blade::loadConfig(app, "blade.json"), "%s", "Failed to load query.");																								\
 	gpk_necall(::blade::loadCWD(app.CWD), "%s", "Failed to load query.");																											\
 	gpk_necall(::blade::loadQuery(app.Query, runtimeValues.QueryStringKeyVals), "%s", "Failed to load query.");																		\
 	gpk_necall(::blade::loadDatabase(app), "%s", "Failed to load blade databases.");																								\

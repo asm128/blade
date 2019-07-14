@@ -1,5 +1,10 @@
-{	"path" :
+{	"path"		:
 	{	"database"	: "blade_database"
 	,	"cache"		: "blade_cache"
 	}
+,	"databases"	: 
+	[	{ "name": "websites"		, "bind" : ["website"			, ] }	
+	,	{ "name": "users"			, "bind" : ["manager"			, ] }		
+	,	{ "name": "publishers"		, "bind" : ["superpublisher"	, ] }	
+	]
 }

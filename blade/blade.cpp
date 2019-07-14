@@ -4,6 +4,8 @@
 #include "gpk_process.h"
 #include "gpk_storage.h"
 
+#include "gpk_json_expression.h"
+
 ::gpk::error_t									blade::validateMethod					(const ::gpk::view_const_string & method)	{
 	::gpk::array_pod<char_t>							environmentBlock; 
 	::gpk::array_obj<::gpk::TKeyValConstString>			environViews;
@@ -16,6 +18,11 @@
 			}
 		}
 	}
+	return 0;
+}
+
+::gpk::error_t									blade::loadConfig						(::blade::SBladeApp & appState, const ::gpk::view_const_string & filename)	{
+	::gpk::jsonFileRead(appState.JSONConfig, filename);
 	return 0;
 }
 

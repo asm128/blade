@@ -27,11 +27,13 @@ namespace blade
 	struct SBladeApp {
 		::gpk::array_obj<TKeyValDB>					Databases					= {};
 		::blade::SQuery								Query						= {};
-		::blade::SProcess							Process				;
+		::blade::SProcess							Process						= {};
 		::gpk::array_pod<char_t>					CWD							= {};
+		::gpk::SJSONFile							JSONConfig					= {};
 	};
 
 	::gpk::error_t									validateMethod				(const ::gpk::view_const_string & method);
+	::gpk::error_t									loadConfig					(::blade::SBladeApp & appState, const ::gpk::view_const_string & filename);
 	::gpk::error_t									loadCWD						(::gpk::array_pod<char_t> & method);
 	::gpk::error_t									loadDetail					(int32_t & detail);
 	::gpk::error_t									loadQuery					(::blade::SQuery& query, const ::gpk::view_array<const ::gpk::TKeyValConstString> keyvals);
