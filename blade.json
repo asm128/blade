@@ -5,7 +5,7 @@
 ,	"databases"	: 
 	[	{ "name": "website"			, "bind" : ["website"			, ] }	
 	,	{ "name": "user"			, "bind" : ["manager"			, ] }		
-	,	{ "name": "publisher"		, "bind" : ["superpublisher"	, ] }	
+	,	{ "name": "publisher"		, "bind" : ["publisher"			, ] }	
 	,	{ "name": "company"			, "bind" : ["owner"				, ] }	
 	]
 }
