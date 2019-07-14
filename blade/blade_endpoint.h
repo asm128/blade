@@ -15,7 +15,7 @@ GPK_CGI_JSON_APP_IMPL();																																							\
 	::blade::SBladeApp									app;																														\
 	::gpk::array_obj<::gpk::TKeyValConstString>			environViews;																												\
 	::gpk::environmentBlockViews(runtimeValues.EntryPointArgs.EnvironmentBlock, environViews);																						\
-	if(0 == ::gpk::keyValVerify(environViews, "GET")) {																																\
+	if(0 == ::gpk::keyValVerify(environViews, "REQUEST_METHOD", "GET")) {																											\
 		output.append(::gpk::view_const_string{"{ \"status\" : 403, \"description\" :\"forbidden\" }\r\n"});																		\
 		return 1;																																									\
 	}																																												\
