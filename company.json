@@ -38,5 +38,5 @@
 }, {
 	"id": 10,
 	"name": "Product Pout Pourri",
-	"supercompany": 3
+	"owner": 3
 }]
