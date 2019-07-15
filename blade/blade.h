@@ -15,7 +15,6 @@ namespace blade
 		::gpk::view_const_string					Expand						= "";
 	};
 
-
 	struct SProcess {
 		PROCESS_INFORMATION							ProcessInfo					= {}; 
 		STARTUPINFOA								StartInfo					= {sizeof(STARTUPINFOA)};

@@ -37,6 +37,17 @@
 	return 0;
 }
 
+::gpk::error_t									blade::loadQuery						(::blade::SQuery& query, const ::gpk::view_array<const ::gpk::TKeyValConstString> keyvals)	{
+	::gpk::keyvalNumeric("offset"	, keyvals, query.Range.Offset	);
+	::gpk::keyvalNumeric("limit"	, keyvals, query.Range.Count	);
+	{
+		::gpk::error_t										indexExpand								= ::gpk::find("expand", keyvals);
+		if(-1 != indexExpand) 
+			query.Expand									= keyvals[indexExpand].Val;
+	}
+	return 0;
+}
+
 static	const ::gpk::TKeyValConstString			g_DataBases	[]							=	// pair of database name/alias
 	{	{"website"		, "website"			}
 	,	{"user"			, "referral"		}	
@@ -57,18 +68,6 @@ static	const ::gpk::TKeyValConstString			g_DataBases	[]							=	// pair of datab
 	}
 	return 0;
 }
-
-::gpk::error_t									blade::loadQuery						(::blade::SQuery& query, const ::gpk::view_array<const ::gpk::TKeyValConstString> keyvals)	{
-	::gpk::keyvalNumeric("offset"	, keyvals, query.Range.Offset	);
-	::gpk::keyvalNumeric("limit"	, keyvals, query.Range.Count	);
-	{
-		::gpk::error_t										indexExpand								= ::gpk::find("expand", keyvals);
-		if(-1 != indexExpand) 
-			query.Expand									= keyvals[indexExpand].Val;
-	}
-	return 0;
-}
-
 static	::gpk::error_t							generate_record_with_expansion			(::gpk::view_array<::gpk::TKeyValJSONFile> & databases, ::gpk::SJSONFile & database, uint32_t iRecord, ::gpk::array_pod<char_t> & output, const ::gpk::view_array<const ::gpk::view_const_char> & fieldsToExpand)	{
 	::gpk::SJSONNode									& node									= *database.Reader.Tree[iRecord];
 	if(0 == fieldsToExpand.size() || ::gpk::JSON_TYPE_OBJECT != node.Object->Type)
