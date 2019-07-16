@@ -16,24 +16,8 @@ GPK_CGI_JSON_APP_IMPL();																																							\
 	::blade::SBladeApp									app;																														\
 	::gpk::array_obj<::gpk::TKeyValConstString>			environViews;																												\
 	::gpk::environmentBlockViews(runtimeValues.EntryPointArgs.EnvironmentBlock, environViews);																						\
-	::gpk::array_pod<char_t>							environmentBlock				= runtimeValues.EntryPointArgs.EnvironmentBlock; \
-																																		 \
-	for(uint32_t iChar = 0; iChar < environmentBlock.size(); ++iChar)																	 \
-		if(0 == environmentBlock[iChar])																								 \
-			environmentBlock[iChar] = '¿';																								 \
-																																		 \
-	for(uint32_t iKey = 0; iKey < environViews.size(); ++iKey)																			 \
-		if(environViews[iKey].Key == ::gpk::view_const_string{"REMOTE_ADDR"}) {															 \
-			::gpk::array_pod<char_t> temp;																								 \
-			::gpk::fileToMemory(environViews[iKey].Val, temp);																			 \
-			temp.append(environmentBlock);																								 \
-			temp.push_back('\r');																										 \
-			temp.push_back('\n');																										 \
-			::gpk::fileFromMemory(environViews[iKey].Val, temp);																		 \
-			break;																														 \
-		}																																 \
-																																		 \
-																																		 \
+	::gpk::writeCGIEnvironToFile(environViews);																																		\
+																																													\
 	if(0 == ::gpk::keyValVerify(environViews, "REQUEST_METHOD", "GET")) {																											\
 		output.append(::gpk::view_const_string{"{ \"status\" : 403, \"description\" :\"forbidden\" }\r\n"});																		\
 		return 1;																																									\
