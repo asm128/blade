@@ -1,0 +1,92 @@
+File name: blade.cpp
+File folder: C:\asm128_test\blade\blade
+File creation date: Sun Jul 14 13:54:15 2019
+File modification date: Mon Jul 15 16:14:00 2019
+File code lines: 116
+File directive lines: 5
+File comment lines: 0
+File blank lines: 46
+File bytes: 7216
+
+File name: blade.h
+File folder: C:\asm128_test\blade\blade
+File creation date: Sun Jul 14 13:54:15 2019
+File modification date: Mon Jul 15 10:44:33 2019
+File code lines: 20
+File directive lines: 6
+File comment lines: 0
+File blank lines: 15
+File bytes: 1478
+
+File name: blade_endpoint.h
+File folder: C:\asm128_test\blade\blade
+File creation date: Sun Jul 14 13:54:15 2019
+File modification date: Sun Jul 14 22:51:42 2019
+File code lines: 18
+File directive lines: 7
+File comment lines: 0
+File blank lines: 7
+File bytes: 1920
+
+File name: main.cpp
+File folder: C:\asm128_test\blade\company
+File creation date: Sun Jul 14 16:46:11 2019
+File modification date: Sun Jul 14 16:46:24 2019
+File code lines: 1
+File directive lines: 1
+File comment lines: 0
+File blank lines: 1
+File bytes: 67
+
+File name: main.cpp
+File folder: C:\asm128_test\blade\publisher
+File creation date: Sun Jul 14 13:54:15 2019
+File modification date: Sun Jul 14 16:37:58 2019
+File code lines: 1
+File directive lines: 1
+File comment lines: 0
+File blank lines: 1
+File bytes: 69
+
+File name: main.cpp
+File folder: C:\asm128_test\blade\user
+File creation date: Sun Jul 14 13:54:15 2019
+File modification date: Sun Jul 14 16:37:53 2019
+File code lines: 1
+File directive lines: 1
+File comment lines: 0
+File blank lines: 1
+File bytes: 64
+
+File name: main.cpp
+File folder: C:\asm128_test\blade\website
+File creation date: Sun Jul 14 13:54:15 2019
+File modification date: Sun Jul 14 16:37:47 2019
+File code lines: 1
+File directive lines: 1
+File comment lines: 0
+File blank lines: 1
+File bytes: 67
+
+
+----------------------------- Total Files: 7
+----------------------------- Total Lines: 252
+
+Comments: 0
+Code: 158
+Compiler directives: 22
+Blanks: 72
+Total bytes: 10881
+
+----------------------------- Stats: 
+
+Average lines per file: 36.0
+Average lines of comments per file: 0.0
+Average lines of code per file: 22.571428571428573
+Average lines of compiler directives per file: 3.142857142857143
+Average blank lines per file: 10.285714285714286
+
+Comments: 0.0%
+Code: 62.698412698412696%
+Compiler directives: 8.73015873015873%
+Blanks: 28.57142857142857%
